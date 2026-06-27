@@ -1,10 +1,12 @@
+import statistics
+
 while True:
     user_text = input(
-        "choose to calculate the Surface Area or volume: "
+        "choose to calculate the Surface Area or volume or mean, mode, median, average, and range:"
     ).strip().lower()
-    if user_text in ("surface area", "volume"):
+    if user_text in ("surface area", "volume or mean, mode, median, average, and range"):
         break
-    print("Please type only: surface area or volume.")
+    print("Please type only: surface area or volume or mean, mode, median, average, and range.")
 if user_text == "surface area":
     while True:
         user_text = input(
@@ -165,3 +167,14 @@ elif user_text == "cube":
             print("Please enter a valid number, like 3.5 or 4.")
     surface_area = 6 * (side_length * side_length)
     print("surface area is", surface_area)
+elif user_text == "mean, mode, median, average, and range":
+    print("----------------------------------------------------------------------------------------")
+    print("This program calculates the mean, mode, median, average, and range of a list of numbers.")
+    print("----------------------------------------------------------------------------------------")
+    numbers = input("Enter numbers separated by spaces: ").split()
+    numbers = [float(x) for x in numbers]
+
+    print("Mean:", statistics.mean(numbers))
+    print("Median:", statistics.median(numbers))
+    print("Mode:", statistics.mode(numbers))
+    print("Range:", max(numbers) - min(numbers))
