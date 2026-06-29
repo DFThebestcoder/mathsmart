@@ -1,131 +1,168 @@
-import statistics
 
-
-def calculate_statistics():
-    print("----------------------------------------------------------------------------------------")
-    print("This program calculates the mean, mode, median, average, and range of a list of numbers.")
-    print("----------------------------------------------------------------------------------------")
-    numbers = input("Enter numbers separated by spaces: ").split()
-    numbers = [float(x) for x in numbers]
-
-    print("Mean:", statistics.mean(numbers))
-    print("Median:", statistics.median(numbers))
-    try:
-        print("Mode:", statistics.mode(numbers))
-    except statistics.StatisticsError:
-        print("Mode: no unique mode")
-    print("Range:", max(numbers) - min(numbers))
-
-
-def get_float_input(prompt):
+while True:
+    user_text = input(
+        "choose to calculate the Surface Area or volume: "
+    ).strip().lower()
+    if user_text in ("surface area", "volume"):
+        break
+    print("Please type only: surface area or volume.")
+if user_text == "surface area":
     while True:
-        user_text = input(prompt).strip()
+        user_text = input(
+            "choose to calculate the Surface Area of a cylinder, cone, sphere, or cube: "
+        ).strip().lower()
+        if user_text in ("cylinder", "cone", "sphere", "cube"):
+            break
+        print("Please type only: cylinder, cone, sphere, or cube.")
+if user_text == "volume":
+    while True:
+        user_text = input(
+            "choose to calculate the volume of a cylinder volume, cone volume, sphere volume, or cube volume: "
+        ).strip().lower()
+        if user_text in ("cylinder volume", "cone volume", "sphere volume", "cube volume"):
+            break
+        print("Please type only: cylinder volume, cone volume, sphere volume, or cube volume.")
+
+if user_text == "cylinder volume":
+    print("-------------------------------------------------")
+    print("This program calculates the volume of a cylinder.")
+    print("-------------------------------------------------")
+    while True:
+        user_text = input("put your radius in the box: ")
         try:
-            return float(user_text)
+            radius = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    area = 3.14 * radius * radius
+    while True:
+        user_text = input("put your height in the box: ")
+        try:
+            height = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    volume = area * height
+    print("volume is", volume)
+
+elif user_text == "cylinder":
+    print("-------------------------------------------------------")
+    print("This program calculates the surface area of a cylinder.")
+    print("-------------------------------------------------------")
+    while True:
+        user_text = input("put your radius in the box: ")
+        try:
+            radius = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    circumference = 2 * 3.14 * radius
+    while True:
+        user_text = input("put your height in the box: ")
+        try:
+            height = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    surface_area = circumference * (radius + height)
+    print("surface area is", surface_area)
+
+elif user_text == "cone volume":
+    print("---------------------------------------------")
+    print("This program calculates the volume of a cone.")
+    print("---------------------------------------------")
+    while True:
+        user_text = input("put your radius in the box: ")
+        try:
+            radius = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    area = 3.14 * radius * radius
+    while True:
+        user_text = input("put your height in the box: ")
+        try:
+            height = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    volume = (1/3) * area * height
+    print("volume is", volume)
+
+elif user_text == "cone":
+    print("---------------------------------------------------")
+    print("This program calculates the surface area of a cone.")
+    print("---------------------------------------------------")
+    while True:
+        user_text = input("put your radius in the box: ")
+        try:
+            radius = float(user_text)
+            break
         except ValueError:
             print("Please enter a valid number, like 3.5 or 4.")
 
+    while True:
+        user_text = input("put your height in the box: ")
+        try:
+            height = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    surface_area = 3.14 * radius * (radius + (height**2 + radius**2)**0.5)
+    print("surface area is",surface_area)
 
-while True:
-    print("Choose an option:")
-    print("1. surface area")
-    print("2. volume")
-    print("3. mmmar")
-    user_text = input("Enter your choice: ").strip().lower()
+elif user_text == "sphere volume":
+    print("-----------------------------------------------")
+    print("This program calculates the volume of a sphere.")
+    print("-----------------------------------------------")
+    while True:
+        user_text = input("put your radius in the box: ")
+        try:
+            radius = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    volume = (4/3) * 3.14 * radius * radius * radius
+    print("volume is", volume)
 
-    if user_text in ("1", "surface area"):
-        while True:
-            shape = input(
-                "choose to calculate the Surface Area of a cylinder, cone, sphere, or cube: "
-            ).strip().lower()
-            if shape in ("cylinder", "cone", "sphere", "cube"):
-                break
-            print("Please type only: cylinder, cone, sphere, or cube.")
+elif user_text == "sphere":
+    print("-----------------------------------------------------")
+    print("This program calculates the surface area of a sphere.")
+    print("-----------------------------------------------------")
+    while True:
+        user_text = input("put your radius in the box: ")
+        try:
+            radius = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    surface_area = 4 * 3.14 * (radius * radius)
+    print("surface area is", surface_area)
 
-        if shape == "cylinder":
-            print("-------------------------------------------------------")
-            print("This program calculates the surface area of a cylinder.")
-            print("-------------------------------------------------------")
-            radius = get_float_input("put your radius in the box: ")
-            height = get_float_input("put your height in the box: ")
-            surface_area = 2 * 3.14 * radius * (radius + height)
-            print("surface area is", surface_area)
+elif user_text == "cube volume":
+    print("-----------------------------------------------")
+    print("This program calculates the volume of a cube.")
+    print("-----------------------------------------------")
+    while True:
+        user_text = input("put your side length in the box: ")
+        try:
+            side_length = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    volume = side_length * side_length * side_length
+    print("volume is", volume)
 
-        elif shape == "cone":
-            print("---------------------------------------------------")
-            print("This program calculates the surface area of a cone.")
-            print("---------------------------------------------------")
-            radius = get_float_input("put your radius in the box: ")
-            height = get_float_input("put your height in the box: ")
-            surface_area = 3.14 * radius * (radius + (height**2 + radius**2)**0.5)
-            print("surface area is", surface_area)
-
-        elif shape == "sphere":
-            print("-----------------------------------------------------")
-            print("This program calculates the surface area of a sphere.")
-            print("-----------------------------------------------------")
-            radius = get_float_input("put your radius in the box: ")
-            surface_area = 4 * 3.14 * (radius * radius)
-            print("surface area is", surface_area)
-
-        elif shape == "cube":
-            print("---------------------------------------------------")
-            print("This program calculates the surface area of a cube.")
-            print("---------------------------------------------------")
-            side_length = get_float_input("put your side length in the box: ")
-            surface_area = 6 * (side_length * side_length)
-            print("surface area is", surface_area)
-
-        break
-
-    elif user_text in ("2", "volume"):
-        while True:
-            shape = input(
-                "choose to calculate the volume of a cylinder volume, cone volume, sphere volume, or cube volume: "
-            ).strip().lower()
-            if shape in ("cylinder volume", "cone volume", "sphere volume", "cube volume"):
-                break
-            print("Please type only: cylinder volume, cone volume, sphere volume, or cube volume.")
-
-        if shape == "cylinder volume":
-            print("-------------------------------------------------")
-            print("This program calculates the volume of a cylinder.")
-            print("-------------------------------------------------")
-            radius = get_float_input("put your radius in the box: ")
-            height = get_float_input("put your height in the box: ")
-            volume = 3.14 * radius * radius * height
-            print("volume is", volume)
-
-        elif shape == "cone volume":
-            print("---------------------------------------------")
-            print("This program calculates the volume of a cone.")
-            print("---------------------------------------------")
-            radius = get_float_input("put your radius in the box: ")
-            height = get_float_input("put your height in the box: ")
-            volume = (1 / 3) * 3.14 * radius * radius * height
-            print("volume is", volume)
-
-        elif shape == "sphere volume":
-            print("-----------------------------------------------")
-            print("This program calculates the volume of a sphere.")
-            print("-----------------------------------------------")
-            radius = get_float_input("put your radius in the box: ")
-            volume = (4 / 3) * 3.14 * radius * radius * radius
-            print("volume is", volume)
-
-        elif shape == "cube volume":
-            print("-----------------------------------------------")
-            print("This program calculates the volume of a cube.")
-            print("-----------------------------------------------")
-            side_length = get_float_input("put your side length in the box: ")
-            volume = side_length * side_length * side_length
-            print("volume is", volume)
-
-        break
-
-    elif user_text in ("3", "mmmar"):
-        calculate_statistics()
-        break
-
-    else:
-        print("Please type only: surface area, volume, or mmmar.")
+elif user_text == "cube":
+    print("---------------------------------------------------")
+    print("This program calculates the surface area of a cube.")
+    print("---------------------------------------------------")
+    while True:
+        user_text = input("put your side length in the box: ")
+        try:
+            side_length = float(user_text)
+            break
+        except ValueError:
+            print("Please enter a valid number, like 3.5 or 4.")
+    surface_area = 6 * (side_length * side_length)
+    print("surface area is", surface_area)
