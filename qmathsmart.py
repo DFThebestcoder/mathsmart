@@ -1,11 +1,11 @@
 import statistics
 while True:
     user_text = input(
-        "choose to calculate the Surface Area, volume, mmmar, addition, or substraction: "
+        "choose to calculate the Surface Area, volume, mmmar, addition, substraction, or AB: "
     ).strip().lower()
-    if user_text in ("surface area", "volume", "mmmar", "addition", "substraction"):
+    if user_text in ("surface area", "volume", "mmmar", "addition", "substraction", "ab"):
         break
-    print("Please type only: surface area, volume, mmmar, addition, or substraction.")
+    print("Please type only: surface area, volume, mmmar, addition, substraction, or AB.")
 if user_text == "surface area":
     while True:
         user_text = input(
@@ -201,5 +201,41 @@ elif user_text == "substraction":
             break
         except ValueError:
             print("Please enter valid numbers, like 3.5 or 4.")
-            
+
     print("your answer is:", numbers[0] - sum(numbers[1:]))
+elif user_text == "ab":
+    print("----------------------------------------------------------------")
+    print("This program calculates the addition and subtraction of numbers.")
+    print("----------------------------------------------------------------")
+
+    while True:
+        user_text = input("put your numbers in the box separated by + and -: ")
+        user_text = user_text.replace(" ", "")
+
+    # Only allow digits, dot, plus and minus
+        if any(ch not in "0123456789.+-" for ch in user_text):
+            print("Please enter valid numbers, like 3.5 or 4.")
+            continue
+
+        try:
+            tokens = []
+            number = ""
+
+            for ch in user_text:
+                if ch in "+-":
+                    if number != "":
+                        tokens.append(float(number))
+                    number = ch
+                else:
+                    number += ch
+
+            if number:
+                tokens.append(float(number))
+
+            result = sum(tokens)
+        except ValueError:
+            print("Please enter valid numbers, like 3.5 or 4.")
+            continue
+
+        print("your answer is:", result)
+        break
