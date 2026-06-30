@@ -1,11 +1,11 @@
 import statistics
 while True:
     user_text = input(
-        "choose to calculate the Surface Area, volume, mmar, or addition: "
+        "choose to calculate the Surface Area, volume, mmmar, or addition: "
     ).strip().lower()
-    if user_text in ("surface area", "volume", "mmar", "addition"):
+    if user_text in ("surface area", "volume", "mmmar", "addition"):
         break
-    print("Please type only: surface area, volume, mmar, or addition.")
+    print("Please type only: surface area, volume, mmmar, or addition.")
 if user_text == "surface area":
     while True:
         user_text = input(
@@ -166,7 +166,7 @@ elif user_text == "cube":
             print("Please enter a valid number, like 3.5 or 4.")
     surface_area = 6 * (side_length * side_length)
     print("surface area is", surface_area)
-elif user_text == "mmar":
+elif user_text == "mmmar":
     print("-------------------------------------------------------------------------------")
     print("This program calculates the mean, median, mode, and range of a list of numbers.")
     print("-------------------------------------------------------------------------------")
